@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+	<div class="ui huge header"><%=blog.title%></div>
+	<div class="ui top attatched">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%=blog.image%>">
+			<div class="content">
+				<span><%=blog.created.toDateString() %></span> <!-- Can use better date options e.g momment.js to get better formating -->
+			</div>
+			<div class="description">
+					<p><%-blog.body%></p>  <!-- USE a single '-' allows users to add html to code e.g adding paragraphys etc... how ever. becarful as they can add script tags and add in JavaScript! Need to SANITISE using express sanitiser which will remove script tags -->
+			</div>
+			<a class="ui orange basic button" href="/blogs/<%=blog._id%>/edit">Edit</a>
+			<form id="delete" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+				<button class="ui red basic button">DELETE
+				</button>
+			</form>
+		</div>
+
+	</div>
+	
+
+
+</div>
+
+
+
+
+<%- include("partials/footer") %>

@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+	<div class="ui huge header">Edit <%= blog.title %></div>
+		<form class="ui form" action="/blogs/<%=blog._id%>?_method=PUT" method="POST"> <!-- PUT / DELTE request doesnt work in HTML5 forms!! we ned to add in ?_method=PUT and use method overide package in express to get around this. Could just send to a different route, but the  it wouldnt follow REST convention. HMTL forms only support get or post requests so most frameworks ahve. todeal with this!-->
+			<div class="field">
+				<label>Title</label>
+				<input type="text" name="blog[title]" value="<%=blog.title%>">
+			</div>
+			<div class="field">
+				<label>Image</label>
+				<input type="text" name="blog[image]" value="<%=blog.image%>">
+			</div>
+			<div class="field">
+				<label>Blog Content</label>
+				<textarea name="blog[body]" required><%=blog.body%></textarea>
+			</div>
+		<input class="ui purple big basic button" type="submit">
+	</form>
+	</div>
+
+</div>
+
+
+
+
+
+
+<%- include("partials/footer") %>
